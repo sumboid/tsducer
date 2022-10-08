@@ -1,4 +1,4 @@
-# tsducer
+# tsducer [![npm version](https://badge.fury.io/js/tsducer.svg)](https://badge.fury.io/js/tsducer)
 
 ## Example
 
