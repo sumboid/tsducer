@@ -1,7 +1,7 @@
 # tsducer
 
-![npm](https://img.shields.io/npm/v/tsducer?style=for-the-badge)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/sumboid/tsducer/master?style=for-the-badge)
+[![npm](https://img.shields.io/npm/v/tsducer?style=for-the-badge)](https://www.npmjs.com/package/tsducer)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sumboid/tsducer/Build%20&%20test?style=for-the-badge)](https://github.com/sumboid/tsducer/actions/workflows/ci.yaml)
 
 ## Example
 
