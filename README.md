@@ -1,4 +1,7 @@
-# tsducer [![npm version](https://badge.fury.io/js/tsducer.svg)](https://badge.fury.io/js/tsducer)
+# tsducer
+
+![npm](https://img.shields.io/npm/v/tsducer?style=for-the-badge)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/sumboid/tsducer/master?style=for-the-badge)
 
 ## Example
 
