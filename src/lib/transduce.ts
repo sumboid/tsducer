@@ -20,3 +20,51 @@ export const transduce =
 
     return res;
   };
+
+const mappend = <P>(res: P[], x: P): P[] => {
+  res.push(x);
+  return res;
+};
+
+export const into =
+  <P, R>(to: R[], xf: XForm<P, R>) =>
+  (xs: P[]): R[] => {
+    let res = to.slice(0);
+    const reducer = xf(mappend as Reducer<R, R[]>);
+
+    try {
+      for (const x of xs) {
+        res = reducer(res, x);
+      }
+    } catch (e: unknown) {
+      if (!(e instanceof Reduced)) {
+        throw e;
+      }
+    }
+
+    return res;
+  };
+
+export const sequence = <P, R>(
+  xf: XForm<P, R>,
+  xs: Iterable<P>
+): Iterable<R> => {
+  const reducer = xf(mappend as Reducer<R, R[]>);
+
+  return (function* () {
+    try {
+      for (const x of xs) {
+        const res = reducer([], x);
+        if (res.length === 0) {
+          continue;
+        }
+
+        yield res[0];
+      }
+    } catch (e: unknown) {
+      if (!(e instanceof Reduced)) {
+        throw e;
+      }
+    }
+  })();
+};
