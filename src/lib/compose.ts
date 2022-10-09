@@ -51,5 +51,9 @@ export function compose<T1, T2, T3, T4, T5, T6, T7, T8, R>(
 ): XForm<T1, R>;
 
 export function compose(...xfs: any[]) {
-  return (reducer: any) => xfs.reverse().reduce((rf, xf) => xf(rf), reducer);
+  return (reducer: any) =>
+    xfs
+      .slice(0)
+      .reverse()
+      .reduce((rf, xf) => xf(rf), reducer);
 }
