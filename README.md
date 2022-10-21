@@ -14,9 +14,12 @@ const xf = tsd.compose(
   tsd.map((x) => x.toString()),
   tsd.take(2)
 );
-const beep = tsd.transduce(xf, tsd.append, [] as string[]);
+const tTransform = tsd.transduce(xf, tsd.append, [] as string[]);
+const iTransform = tsd.into([], xf);
 
-beep([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); // -> ['2', '6']
+tTransform([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); // -> ['2', '6']
+iTransform([], xf)([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) // -> ['2', '6']
+[...tsd.sequence(xf, [1 ,2, 3, 4, 5, 6, 7, 8, 9, 10])] // -> ['2', '6']
 ```
 
 ## References
