@@ -1,6 +1,6 @@
 {
   "name": "tsducer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "TypeScript transducer library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
