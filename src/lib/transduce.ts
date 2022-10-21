@@ -26,24 +26,8 @@ const mappend = <P>(res: P[], x: P): P[] => {
   return res;
 };
 
-export const into =
-  <P, R>(to: R[], xf: XForm<P, R>) =>
-  (xs: P[]): R[] => {
-    let res = to.slice(0);
-    const reducer = xf(mappend as Reducer<R, R[]>);
-
-    try {
-      for (const x of xs) {
-        res = reducer(res, x);
-      }
-    } catch (e: unknown) {
-      if (!(e instanceof Reduced)) {
-        throw e;
-      }
-    }
-
-    return res;
-  };
+export const into = <P, R>(to: R[], xf: XForm<P, R>): ((xs: P[]) => R[]) =>
+  transduce(xf, mappend, to.slice(0));
 
 export const sequence = <P, R>(
   xf: XForm<P, R>,

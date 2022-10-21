@@ -24,21 +24,7 @@ const mappend = (res, x) => {
     res.push(x);
     return res;
 };
-const into = (to, xf) => (xs) => {
-    let res = to.slice(0);
-    const reducer = xf(mappend);
-    try {
-        for (const x of xs) {
-            res = reducer(res, x);
-        }
-    }
-    catch (e) {
-        if (!(e instanceof types_1.Reduced)) {
-            throw e;
-        }
-    }
-    return res;
-};
+const into = (to, xf) => (0, exports.transduce)(xf, mappend, to.slice(0));
 exports.into = into;
 const sequence = (xf, xs) => {
     const reducer = xf(mappend);
